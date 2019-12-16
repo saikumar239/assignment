@@ -1,0 +1,26 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "To create file in S3 bucket frm SSM parameter",
+  "Resources":{
+  "exerciseLambda": {
+  "Properties": {
+    "AWSAccountId": {
+      "Ref": "AWS::AccountId"
+    },
+    "AWSRegion": {
+      "Ref": "AWS::Region"
+    },
+    "ServiceToken": {
+      "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:exercise-lambda"
+    },
+    "StackId": {
+      "Ref": "AWS::StackId"
+    },
+    "StackName": {
+      "Ref": "AWS::StackName"
+    }
+  },
+  "Type": "Custom::exerciseLambda"
+  }
+}
+}
